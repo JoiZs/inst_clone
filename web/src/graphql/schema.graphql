@@ -1,0 +1,89 @@
+type Query {
+  users: [Insu!]!
+  posts: [Post!]!
+}
+
+type Insu {
+  username: String!
+  fullname: String!
+  email: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
+type Post {
+  postID: String!
+  postText: String
+  postLiked: Int!
+  postComment: [Comment!]
+  postContent: [Content!]
+  postUserID: String!
+  postCreatedAt: DateTime!
+  postUpdatedAt: DateTime!
+}
+
+type Comment {
+  mentId: String!
+  mentUserID: String!
+  mentText: String!
+  mentCreatedAt: DateTime!
+  mentLiked: Int!
+  mentReplied: String
+  mentPostID: String!
+}
+
+type Content {
+  url: String!
+}
+
+type Mutation {
+  login(loginInp: loginInp!): Resp!
+  revokerft(id: String!): Resp!
+  register(reginp: regInp!): Resp!
+  logout: Resp!
+  postment(mentinp: mentInpType!): Resp!
+  delment(mentId: String!): Resp!
+  createPost(postcreateinp: postCreateInp!): Resp!
+}
+
+type Resp {
+  data: ResType
+  error: ResType
+}
+
+type ResType {
+  type: String!
+  message: String!
+}
+
+input loginInp {
+  cred: String!
+  password: String!
+}
+
+input regInp {
+  username: String!
+  fullname: String!
+  email: String!
+  password: String!
+}
+
+input mentInpType {
+  mentText: String!
+  mentPostID: String!
+  mentReplyID: String
+}
+
+input postCreateInp {
+  postText: String
+  postContent: [postContentInp!]
+}
+
+input postContentInp {
+  url: String!
+}

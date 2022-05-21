@@ -1,0 +1,79 @@
+query Me {
+  me {
+    username
+    fullname
+    posts {
+      postID
+      postLiked
+      postContent {
+        url
+      }
+    }
+  }
+}
+
+query Auser($username: String!) {
+  auser(username: $username) {
+    username
+    fullname
+    posts {
+      postID
+      postLiked
+      postContent {
+        url
+      }
+    }
+  }
+}
+
+mutation Login($loginInp: loginInp!) {
+  login(loginInp: $loginInp) {
+    data {
+      type
+      message
+    }
+    error {
+      type
+      message
+    }
+  }
+}
+
+mutation Register($reginp: regInp!) {
+  register(reginp: $reginp) {
+    data {
+      type
+      message
+    }
+    error {
+      type
+      message
+    }
+  }
+}
+
+mutation Revokerft($revokerftId: String!) {
+  revokerft(id: $revokerftId) {
+    data {
+      type
+      message
+    }
+    error {
+      type
+      message
+    }
+  }
+}
+
+mutation Logout {
+  logout {
+    data {
+      type
+      message
+    }
+    error {
+      type
+      message
+    }
+  }
+}

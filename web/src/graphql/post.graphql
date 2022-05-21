@@ -1,0 +1,56 @@
+query Posts {
+  posts {
+    postID
+    postText
+    postLiked
+    postUser {
+      username
+    }
+    postContent {
+      url
+    }
+    postUserID
+    postCreatedAt
+  }
+}
+
+query Singlepost($postid: String!) {
+  singlepost(postid: $postid) {
+    postID
+    postText
+    postContent {
+      url
+    }
+    postUser {
+      username
+    }
+    postLiked
+    postCreatedAt
+  }
+}
+
+mutation CreatePost($postcreateinp: postCreateInp!) {
+  createPost(postcreateinp: $postcreateinp) {
+    data {
+      type
+      message
+    }
+    error {
+      type
+      message
+    }
+  }
+}
+
+mutation Delpost($postid: String!) {
+  delpost(postid: $postid) {
+    data {
+      type
+      message
+    }
+    error {
+      type
+      message
+    }
+  }
+}

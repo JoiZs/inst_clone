@@ -1,0 +1,40 @@
+query Comments {
+  ments {
+    __typename
+    mentId
+    mentUser {
+      username
+    }
+    mentText
+    mentCreatedAt
+    mentLiked
+    mentReplied
+    mentPostID
+  }
+}
+
+mutation Postment($mentinp: mentInpType!) {
+  postment(mentinp: $mentinp) {
+    data {
+      type
+      message
+    }
+    error {
+      type
+      message
+    }
+  }
+}
+
+mutation Delment($mentId: String!) {
+  delment(mentId: $mentId) {
+    data {
+      type
+      message
+    }
+    error {
+      type
+      message
+    }
+  }
+}
